@@ -1,5 +1,3 @@
-local utils = require('Set.utils')
-
 function Set(list)
   local _items = {}
   local _size = 0
@@ -24,7 +22,7 @@ function Set(list)
     end,
 
     has = function(value)
-      return utils.to_boolean(_items[value])
+      return _items[value] == true
     end,
 
     clear = function()
