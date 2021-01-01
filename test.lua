@@ -3,6 +3,21 @@ local Set = require('Set')
 
 local list = Set({ 'lua', 'javascript', 'ruby' })
 
+test('items', function(_assert)
+  _assert.deep_equal(
+    list.items,
+    { ['lua'] = true, ['javascript'] = true, ['ruby'] = true }
+  )
+end)
+
+test('insert', function(_assert)
+  list.insert('c++')
+  list.insert('typescript')
+
+  _assert.ok(list.has('c++'))
+  _assert.ok(list.has('typescript'))
+end)
+
 test('has', function(_assert)
   _assert.ok(list.has('lua'))
   _assert.ok(list.has('javascript'))
@@ -19,9 +34,6 @@ test('delete', function(_assert)
 end)
 
 test('each', function(_assert)
-  list.insert('typescript')
-  list.insert('c++')
-
   local keys = {}
   list.each(function(k)
     table.insert(keys, k)
