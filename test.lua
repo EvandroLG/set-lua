@@ -5,7 +5,7 @@ local list = Set({ 'lua', 'javascript', 'ruby' })
 
 test('items', function(_assert)
   _assert.deep_equal(
-    list.items,
+    list.items(),
     { ['lua'] = true, ['javascript'] = true, ['ruby'] = true }
   )
 

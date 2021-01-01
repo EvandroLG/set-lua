@@ -1,39 +1,41 @@
 local utils = require('Set.utils')
 
 function Set(list)
-  local items = {}
-  local size = 0
+  local _items = {}
+  local _size = 0
 
   for _, value in ipairs(list) do
-    items[value] = true
-    size = size + 1
+    _items[value] = true
+    _size = _size + 1
   end
 
   return {
-    items = items,
+    items = function()
+      return _items
+    end,
 
     size = function()
-      return size
+      return _size
     end,
 
     insert = function(value)
-      items[value] = true
-      size = size + 1
+      _items[value] = true
+      _size = _size + 1
     end,
 
     has = function(value)
-      return utils.to_boolean(items[value])
+      return utils.to_boolean(_items[value])
     end,
 
     clear = function()
-      items = {}
-      size = 0
+      _items = {}
+      _size = 0
     end,
 
     delete = function(value)
-      if items[value] then
-        items[value] = nil
-        size = size - 1
+      if _items[value] then
+        _items[value] = nil
+        _size = _size - 1
         return true
       end
 
@@ -41,7 +43,7 @@ function Set(list)
     end,
 
     each = function(callback)
-      for key in pairs(items) do
+      for key in pairs(_items) do
         callback(key)
       end
     end
