@@ -1,10 +1,7 @@
 local test = require('simple_test')
 local Set = require('Set')
 
-local list = Set()
-list.insert('lua')
-list.insert('javascript')
-list.insert('ruby')
+local list = Set({ 'lua', 'javascript', 'ruby' })
 
 test('has', function(_assert)
   _assert.ok(list.has('lua'))

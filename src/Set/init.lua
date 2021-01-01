@@ -1,9 +1,15 @@
 local utils = require('Set.utils')
 
-function Set()
+function Set(list)
   local items = {}
 
+  for _, value in ipairs(list) do
+    items[value] = true
+  end
+
   return {
+    items = items,
+
     insert = function(value)
       items[value] = true
     end,
