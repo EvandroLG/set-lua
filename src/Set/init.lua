@@ -13,7 +13,7 @@ function Set(list)
   end
 
   return {
-    -- Returns table of current items
+    -- Returns current Set items
     -- @returns {table}
     items = function()
       return _items
@@ -25,7 +25,7 @@ function Set(list)
       return _size
     end,
 
-    -- Append value to the Set object
+    -- Appends value to the Set object
     -- @param value {any}
     -- @returns {void}
     insert = function(value)
@@ -64,7 +64,7 @@ function Set(list)
 
     -- Calls function once for each item present in the Set object without preserve insertion order
     -- @param callback {function}
-    -- @returns {boolean}
+    -- @returns {void}
     each = function(callback)
       for key in pairs(_items) do
         callback(key)
