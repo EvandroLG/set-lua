@@ -5,11 +5,11 @@ local list = Set({ 'lua', 'javascript', 'ruby' })
 
 test('items', function(_assert)
   _assert.deep_equal(
-    list.items(),
+    list.items,
     { ['lua'] = true, ['javascript'] = true, ['ruby'] = true }
   )
 
-  _assert.equal(list.size(), 3)
+  _assert.equal(list.size, 3)
 end)
 
 test('insert', function(_assert)
@@ -18,7 +18,7 @@ test('insert', function(_assert)
 
   _assert.ok(list.has('c++'))
   _assert.ok(list.has('typescript'))
-  _assert.equal(list.size(), 5)
+  _assert.equal(list.size, 5)
 end)
 
 test('has', function(_assert)
@@ -31,11 +31,11 @@ end)
 test('delete', function(_assert)
   _assert.ok(list.delete('javascript'))
   _assert.not_ok(list.has('javascript'))
-  _assert.equal(list.size(), 4)
+  _assert.equal(list.size, 4)
 
   _assert.not_ok(list.delete('python'))
   _assert.not_ok(list.has('python'))
-  _assert.equal(list.size(), 4)
+  _assert.equal(list.size, 4)
 end)
 
 test('each', function(_assert)
