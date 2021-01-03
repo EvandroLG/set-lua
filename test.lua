@@ -94,3 +94,14 @@ test('difference', function(_assert)
     expected
   )
 end)
+
+test('symmetric_difference', function(_assert)
+  local s1 = Set({ 'lua', 'ruby', 'javascript' })
+  local s2 = Set({ 'typescript', 'ruby' })
+  local expected  = { ['lua'] = true, ['javascript'] = true, ['typescript'] = true }
+
+  _assert.deep_equal(
+    s1.symmetric_difference(s2).items,
+    expected
+  )
+end)

@@ -127,6 +127,23 @@ function Set(list)
     return result
   end
 
+  -- Returns a symetric difference of two Sets
+  -- @param {Set}
+  -- @returns {Set}
+  self.symmetric_difference = function(set)
+    local difference = Set(utils.to_array(self.items))
+
+    set.each(function(value)
+      if difference.has(value) then
+        difference.delete(value)
+      else
+        difference.insert(value)
+      end
+    end)
+
+    return difference
+  end
+
   return self
 end
 
