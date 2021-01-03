@@ -5,7 +5,13 @@ local utils = require('Set.utils')
 -- @returns {table}
 function Set(list)
   local self = {}
+
+  -- Items presented in Set
+  -- @type table
   self.items = {}
+
+  -- Current Set length
+  -- @type number
   self.size = 0
 
   if type(list) == 'table' then
@@ -75,7 +81,7 @@ function Set(list)
   end
 
   -- Returns a new Set that contains all items from the original Set and all items from the specified Sets
-  -- @param ... {table}
+  -- @param {Set[]}
   -- @returns Set
   self.union = function(...)
     local args = {...}
@@ -91,7 +97,7 @@ function Set(list)
   end
 
   -- Returns a new Set that contains all elements that are common in all Sets
-  -- @param ... {table}
+  -- @param {Set[]}
   -- @returns Set
   self.intersection = function(...)
     local args = {...}
@@ -116,7 +122,7 @@ function Set(list)
   end
 
   -- Returns a new Set that contains the items that only exist in the original Set
-  -- @param ... {table}
+  -- @param {Set[]}
   -- @returns Set
   self.difference = function(...)
     local args = {...}

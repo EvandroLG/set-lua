@@ -24,13 +24,15 @@ list.insert('orange')
 list.has('orange') -- true
 ```
 
+## API
+### Properties
+* Set.<code>items:table</code><br />
+Items presented in Set.
+
+* Set.<code>size:number</code><br />
+Current Set length.
+
 ### Methods
-* Set.<code>items():table</code><br />
-Returns current Set items.
-
-* Set.<code>size():number</code><br />
-Returns current Set size.
-
 * Set.<code>insert(value:any):void</code><br />
 Appends value to the Set object.
 
@@ -45,6 +47,27 @@ Removes item from the Set object and returns a boolean value asserting wheater i
 
 * Set.<code>each(callback:function):void</code><br />
 Removes item from the Set object and returns a boolean value asserting wheater item was removed or not.
+
+* Set.<code>every(callback:function):boolean</code><br />
+Returns true whether all items pass the test provided by the callback function.
+
+* Set.<code>union(s1[, s2, ...]: Set):Set</code><br />
+Returns a new Set that contains all items from the original Set and all items from the specified Sets.
+
+* Set.<code>intersection(s1[, s2, ...]: Set):Set</code><br />
+Returns a new Set that contains all elements that are common in all Sets.
+
+* Set.<code>difference(s1[, s2, ...]: Set):Set</code><br />
+Returns a new Set that contains the items that only exist in the original Set.
+
+* Set.<code>difference(s1[, s2, ...]: Set):Set</code><br />
+Returns a new Set that contains the items that only exist in the original Set.
+
+* Set.<code>symmetric_difference(s2: Set):Set</code><br />
+Returns a symetric difference of two Sets.
+
+* Set.<code>is_superset(subset: Set):boolean</code><br />
+Returns true if set has all items present in the subset.
 
 ## License
 [MIT](./LICENSE)
