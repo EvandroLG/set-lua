@@ -85,16 +85,41 @@ function Set(list)
     local result = Set()
 
     self.each(function(value)
-      local isCommon = true
+      local is_common = true
 
       for _, set in ipairs(args) do
         if not set.has(value) then
-          isCommon = false
+          is_common = false
           break
         end
       end
 
-      if isCommon then
+      if is_common then
+        result.insert(value)
+      end
+    end)
+
+    return result
+  end
+
+  -- Returns a new Set that contains the items that only exist in the original Set
+  -- @param ... {table}
+  -- @returns Set
+  self.difference = function(...)
+    local args = {...}
+    local result = Set()
+
+    self.each(function(value)
+      local is_common = false
+
+      for _, set in ipairs(args) do
+        if set.has(value) then
+          is_common = true
+          break
+        end
+      end
+
+      if not is_common then
         result.insert(value)
       end
     end)

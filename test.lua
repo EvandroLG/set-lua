@@ -82,3 +82,15 @@ test('intersection', function(_assert)
     expected
   )
 end)
+
+test('difference', function(_assert)
+  local s1 = Set({ 'lua', 'ruby', 'c++' })
+  local s2 = Set({ 'javascript', 'lua', 'typescript', 'c++' })
+  local s3 = Set({ 'lua', 'python', 'go', 'rust', 'c++' })
+  local expected = { ['ruby'] = true }
+
+  _assert.deep_equal(
+    s1.difference(s2, s3).items,
+    expected
+  )
+end)
