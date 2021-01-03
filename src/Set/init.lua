@@ -7,11 +7,11 @@ function Set(list)
   local self = {}
 
   -- Items presented in Set
-  -- @type table
+  -- @type {table}
   self.items = {}
 
   -- Current Set length
-  -- @type number
+  -- @type {number}
   self.size = 0
 
   if type(list) == 'table' then
