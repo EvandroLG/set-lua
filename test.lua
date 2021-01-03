@@ -49,3 +49,24 @@ test('each', function(_assert)
     table.sort({ 'lua', 'ruby', 'typescript', 'c++' })
   )
 end)
+
+test('union', function(_assert)
+  local s1 = Set({ 'lua', 'ruby', 'c++' })
+  local s2 = Set({ 'javascript', 'typescript', 'c++' })
+  local s3 = Set({ 'lua', 'python', 'go', 'rust' })
+  local expected = {
+    ['lua'] = true,
+    ['ruby'] = true,
+    ['c++'] = true,
+    ['javascript'] = true,
+    ['typescript'] = true,
+    ['python'] = true,
+    ['go'] = true,
+    ['rust'] = true,
+  }
+
+  _assert.deep_equal(
+    s1.union(s2, s3).items,
+    expected
+  )
+end)

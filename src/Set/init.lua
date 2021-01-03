@@ -1,3 +1,5 @@
+local utils = require('Set.utils')
+
 -- Set lets you store unique values of any type
 -- @param list {table}
 -- @returns {table}
@@ -57,6 +59,19 @@ function Set(list)
     for key in pairs(self.items) do
       callback(key)
     end
+  end
+
+  self.union = function(...)
+    local args = {...}
+    local result = Set(utils.to_array(self.items))
+
+    for _, set in ipairs(args) do
+      set.each(function(value)
+        result.insert(value)
+      end)
+    end
+
+    return result
   end
 
   return self
