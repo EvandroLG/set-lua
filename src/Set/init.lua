@@ -61,6 +61,9 @@ function Set(list)
     end
   end
 
+  -- Returns a new Set that contains all items from the original Set and all items from the specified Sets
+  -- @param ... {table}
+  -- @returns Set
   self.union = function(...)
     local args = {...}
     local result = Set(utils.to_array(self.items))
@@ -70,6 +73,31 @@ function Set(list)
         result.insert(value)
       end)
     end
+
+    return result
+  end
+
+  -- Returns a new Set that contains all elements that are common in all Sets
+  -- @param ... {table}
+  -- @returns Set
+  self.intersection = function(...)
+    local args = {...}
+    local result = Set()
+
+    self.each(function(value)
+      local isCommon = true
+
+      for _, set in ipairs(args) do
+        if not set.has(value) then
+          isCommon = false
+          break
+        end
+      end
+
+      if isCommon then
+        result.insert(value)
+      end
+    end)
 
     return result
   end

@@ -70,3 +70,15 @@ test('union', function(_assert)
     expected
   )
 end)
+
+test('intersection', function(_assert)
+  local s1 = Set({ 'lua', 'ruby', 'c++' })
+  local s2 = Set({ 'javascript', 'lua', 'typescript', 'c++' })
+  local s3 = Set({ 'lua', 'python', 'go', 'rust', 'c++' })
+  local expected = { ['lua'] = true, ['c++'] = true }
+
+  _assert.deep_equal(
+    s1.intersection(s2, s3).items,
+    expected
+  )
+end)
