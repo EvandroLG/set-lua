@@ -61,6 +61,19 @@ function Set(list)
     end
   end
 
+  -- Returns true whether all items pass the test provided by the callback function
+  -- @param callback {function}
+  -- @returns {boolean}
+  self.every = function(callback)
+    for key in pairs(self.items) do
+      if not callback(key) then
+        return false
+      end
+    end
+
+    return true
+  end
+
   -- Returns a new Set that contains all items from the original Set and all items from the specified Sets
   -- @param ... {table}
   -- @returns Set
@@ -142,6 +155,15 @@ function Set(list)
     end)
 
     return difference
+  end
+
+  -- Returns true if set has all items present in the subset
+  -- @param {Set}
+  -- @returns {boolean}
+  self.is_superset = function(subset)
+    return self.every(function(value)
+      return subset.has(value)
+    end)
   end
 
   return self

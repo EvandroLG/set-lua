@@ -50,6 +50,16 @@ test('each', function(_assert)
   )
 end)
 
+test('every', function(_assert)
+  _assert.ok(
+    list.every(function(value) return type(value) == 'string' end)
+  )
+
+  _assert.not_ok(
+    list.every(function(value) return type(value) == 'number' end)
+  )
+end)
+
 test('union', function(_assert)
   local s1 = Set({ 'lua', 'ruby', 'c++' })
   local s2 = Set({ 'javascript', 'typescript', 'c++' })
@@ -103,5 +113,19 @@ test('symmetric_difference', function(_assert)
   _assert.deep_equal(
     s1.symmetric_difference(s2).items,
     expected
+  )
+end)
+
+test('is_superset', function(_assert)
+  local s1 = Set({ 'lua', 'ruby', 'javascript' })
+  local s2 = Set({ 'lua', 'ruby', 'javascript', 'c++' })
+  local s3 = Set({ 'lua', 'typescript', 'ruby', 'c' })
+
+  _assert.ok(
+    s1.is_superset(s2)
+  )
+
+  _assert.not_ok(
+    s1.is_superset(s3)
   )
 end)
