@@ -60,9 +60,6 @@ Returns a new Set that contains all elements that are common in all Sets.
 * Set.<code>difference(s1[, s2, ...]: Set):Set</code><br />
 Returns a new Set that contains the items that only exist in the original Set.
 
-* Set.<code>difference(s1[, s2, ...]: Set):Set</code><br />
-Returns a new Set that contains the items that only exist in the original Set.
-
 * Set.<code>symmetric_difference(s2: Set):Set</code><br />
 Returns a symetric difference of two Sets.
 
